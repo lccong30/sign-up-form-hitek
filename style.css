@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Open sans", sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    color: #6a727f;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+input[type=number]::-moz-outer-spin-button {
+    display: none;
+}
+
+input[type=number]::-ms-inner-spin-button,
+input[type=number]::-ms-outer-spin-button {
+    display: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.contact {
+    padding: 150px 0;
+    background: url("./assets/images/contact-bg.png") no-repeat center center / cover;
+    max-height: 100vh;
+    max-width: 100vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    overflow: hidden;
+    /* background-image: linear-gradient(to right,
+            #12c2e9,
+            #556270,
+            #4ECDC4); */
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.contact-heading {
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 570px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+.contact-heading>h2 {
+    font-weight: 400;
+    font-size: 36px;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 10px;
+}
+
+.contact-heading>p {
+    font-size: 18px;
+    line-height: 1.8;
+    line-height: 1.8;
+}
+
+.contact-form {
+    max-width: 570px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: 0 20px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.error-msg {
+    color: pink;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.contact__form-group {
+    margin-bottom: 20px;
+
+}
+
+.contact-form input,
+textarea {
+    border: none;
+    outline: none;
+}
+
+.contact-area {
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    resize: none;
+    margin-bottom: 30px;
+    min-height: 100px;
+    border-radius: 4px;
+}
+
+.btn-contact {
+    width: 250px;
+    height: 55px;
+    background-image: linear-gradient(120deg, #40e0d0, #ff8c00, #ff0080);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1023px) {}
+
+@media screen and (max-width: 767px) {
+    .contact {
+        padding: 100px 0;
+    }
+
+    .contact-heading>p {
+        font-size: 17px;
+    }
+
+    .contact-heading>h2 {
+        font-size: 28px;
+    }
+
+    .contact-heading {
+        margin-bottom: 50px;
+    }
+
+    .contact-input {
+        height: 50px;
+    }
+
+    .btn-contact {
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+@media screen and (max-width: 480px) {
+    .contact {
+        padding: 100px 0;
+    }
+
+    .contact-heading {
+        padding: 0 20px;
+        font-size: 14px;
+
+    }
+}
+
+@media screen and (max-width: 320px) {}
+
+
+
+body .toastify.on {
+    background: #04B20B;
+    border: none;
+    font-size: 14px;
+    transition: .3s all;
+}
+
+.toast-position {
+    top: 8rem !important;
+}
+
+/* notifycation */
+
+#notify {
+    position: fixed;
+    top: 20%;
+    right: -300px;
+    z-index: 30;
+}
+
+.notify.active {
+    animation: .6s showNotify ease-in-out forwards;
+
+}
+
+.notify.hidden {
+    animation: .6s hiddenNotify ease-in-out forwards;
+
+}
+
+
+
+.notify__container {
+    color: white;
+    background-color: green;
+    z-index: 20;
+    padding: 15px 30px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all;
+}
+
+.notify__container span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100rem;
+
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(202, 193, 193);
+}
+
+@keyframes showNotify {
+    from {
+        right: -300px;
+    }
+
+    to {
+        right: 30px;
+    }
+}
+
+@keyframes hiddenNotify {
+    from {
+        right: 30px;
+    }
+
+    to {
+        right: -300px;
+
+    }
+}
