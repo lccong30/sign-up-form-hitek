@@ -115,6 +115,24 @@
             })
         }
 
+        const handleNotify = (msg, warning) => {
+            const a = document.querySelector('.notify__container')
+            const tosify = document.querySelector('#notify')
+
+            tosify.classList.remove('active')
+            tosify.classList.remove('hidden')
+            tosify.classList.remove('warning')
+
+            a.innerHTML = msg
+            warning ? tosify.classList.add('active', "warning") : tosify.classList.add('active')
+
+            setTimeout(() => {
+                tosify.classList.add('hidden')
+            }, 2000)
+
+
+        }
+
         const handleSubmit = async (e) => {
             e.preventDefault()
 
@@ -136,19 +154,20 @@
                 await axios.post('https://server-subscriber-hitek.vercel.app/api/pms/subscribe', payload)
                     .then(async function (response) {
                         await console.log(response);
-                        tosify.classList.add('active')
                         handleReset()
-                        setTimeout(() => {
-                            tosify.classList.remove('active')
-                            tosify.classList.add('hidden')
-                        }, 2000)
+                        handleNotify(response.data.msg, false)
+
 
                     })
                     .catch(function (error) {
+                        console.log('catch')
                         console.log(error);
+                        handleNotify(error.response.data, true)
+
                     });
             } else {
                 console.log('Chua nhap du thong tin')
+
             }
         }
 
