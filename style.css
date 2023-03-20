@@ -196,13 +196,16 @@ body .toastify.on {
     top: 20%;
     right: -300px;
     z-index: 30;
+    display: none;
 }
 
 .notify.active {
+    display: block !important;
     animation: .6s showNotify ease-in-out forwards;
 }
 
 .notify.active.warning .notify__container {
+    display: block !important;
     /* border-bottom: 4px solid #F79300; */
     background-color: #F79300;
     background-color: rgb(234, 195, 21);
@@ -258,6 +261,6 @@ body .toastify.on {
 
     to {
         right: -300px;
-
+        display: none;
     }
 }
