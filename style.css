@@ -100,7 +100,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .contact__form-group {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
 }
 
@@ -155,6 +155,8 @@ textarea {
     .btn-contact {
         width: 100%;
     }
+    .contact__form-group {
+        margin-bottom: 10px;
 
 }
 
