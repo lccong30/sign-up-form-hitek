@@ -155,6 +155,8 @@ textarea {
     .btn-contact {
         width: 100%;
     }
+    .contact__form-group {
+        margin-bottom: 10px;
 
 }
 
