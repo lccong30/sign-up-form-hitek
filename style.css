@@ -174,7 +174,7 @@ textarea {
 
 @media screen and (max-width: 480px) {
     .contact {
-        padding: 100px 0;
+        /* padding: 100px 0; */
     }
 
     .contact-heading {
