@@ -132,7 +132,7 @@ textarea {
     font-weight: bold;
 }
 
-@media screen and (max-width: 1023px) {}
+
 
 @media screen and (max-width: 767px) {
     .contact {
@@ -164,17 +164,21 @@ textarea {
 
     }
 
-    .contact-area {
-        display: none;
-    }
-
-
 }
 
+@media screen and (max-width: 640px) {
+    /* .contact-area {
+        display: none;
+    } */
+}
 
 @media screen and (max-width: 480px) {
-    .contact {
-        /* padding: 100px 0; */
+
+    /* .contact {
+        padding: 100px 0;
+    } */
+    .contact-area {
+        display: none;
     }
 
     .contact-heading {

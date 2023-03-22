@@ -73,24 +73,26 @@ const handleSubmit = async (e) => {
   const input_note = document.querySelector(".contact-input-note");
   const tosify = document.querySelector("#notify");
 
+  const btnSubmit = document.querySelector("#sumit-form");
+
   let isEmpty = checkInput();
   let isEmailInValid = validateEmail(input_email);
   if (!isEmpty && !isEmailInValid) {
+    btnSubmit.value = "Đang gửi...";
     const payload = {
       name: input_name.value,
       phone: input_phone.value,
       email: input_email.value,
       note: input_note.value,
     };
+
     await axios
-      .post(
-        "https://server-subscriber-hitek.vercel.app/api/pms/subscribe",
-        payload
-      )
+      .post("http://localhost:8080/subscribers/", payload)
       .then(async function (response) {
         await console.log(response);
         handleReset();
         handleNotify(response.data.msg, false);
+        btnSubmit.value = "Gửi";
       })
       .catch(function (error) {
         console.log("catch");
