@@ -44,6 +44,7 @@ const handleReset = () => {
   listInput.forEach((inp) => {
     inp.value = "";
   });
+  document.querySelector(".contact-input-note").value = "";
 };
 
 const handleNotify = (msg, warning) => {
@@ -63,7 +64,7 @@ const handleNotify = (msg, warning) => {
     tosify.classList.add("hidden");
   }, 2000);
 };
-
+handleNotify();
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -87,12 +88,12 @@ const handleSubmit = async (e) => {
     };
 
     await axios
-      .post("http://localhost:8080/subscribers/", payload)
+      .post("https://server-hitek.vercel.app/subscribers/", payload)
       .then(async function (response) {
-        await console.log(response);
+        // await console.log(response);
         handleReset();
-        handleNotify(response.data.msg, false);
-        btnSubmit.value = "Gửi";
+        handleNotify(`! Đăng ký thành công`, false);
+        btnSubmit.value = "Đã lưu";
       })
       .catch(function (error) {
         console.log("catch");
@@ -100,7 +101,7 @@ const handleSubmit = async (e) => {
         handleNotify(error.response.data, true);
       });
   } else {
-    console.log("Chua nhap du thong tin");
+    console.log("Missing input");
   }
 };
 
