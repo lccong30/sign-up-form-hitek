@@ -64,7 +64,6 @@ const handleNotify = (msg, warning) => {
     tosify.classList.add("hidden");
   }, 2000);
 };
-handleNotify();
 const handleSubmit = async (e) => {
   e.preventDefault();
 
