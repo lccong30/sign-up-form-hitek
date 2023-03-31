@@ -55,7 +55,7 @@ const handleNotify = (msg, warning) => {
   tosify.classList.remove("hidden");
   tosify.classList.remove("warning");
 
-  a.innerHTML = msg;
+  a.innerHTML = `${msg}`;
   warning
     ? tosify.classList.add("active", "warning")
     : tosify.classList.add("active");
@@ -87,17 +87,20 @@ const handleSubmit = async (e) => {
     };
 
     await axios
-      .post("https://server-hitek.vercel.app/subscribers/", payload)
+      .post("http://localhost:8080/subscribers/", payload)
       .then(async function (response) {
         // await console.log(response);
         handleReset();
         handleNotify(`! Đăng ký thành công`, false);
         btnSubmit.value = "Đã lưu";
+        setTimeout(() => {
+          btnSubmit.value = "Gửi";
+        }, 2000);
       })
-      .catch(function (error) {
-        console.log("catch");
-        console.log(error);
-        handleNotify(error.response.data, true);
+      .catch(async function (error) {
+        console.log(error.response.data.msg);
+        await handleNotify(`! ${error.response.data.msg}`, true);
+        btnSubmit.value = "Gửi";
       });
   } else {
     console.log("Missing input");
