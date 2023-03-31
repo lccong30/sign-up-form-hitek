@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
     };
 
     await axios
-      .post("http://localhost:8080/subscribers/", payload)
+      .post("https://server-hitek.vercel.app/subscribers/", payload)
       .then(async function (response) {
         // await console.log(response);
         handleReset();
