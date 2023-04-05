@@ -1,6 +1,9 @@
 const listInput = document.querySelectorAll(".contact-input");
 const contactForm = document.querySelector(".contact-form");
 
+const urlParams = new URLSearchParams(window.location.search);
+const webId = urlParams.get("web_id");
+
 function showError(input, msg) {
   input.parentElement.querySelector("span").innerHTML = msg || "Không hợp lệ";
 }
@@ -80,14 +83,15 @@ const handleSubmit = async (e) => {
   if (!isEmpty && !isEmailInValid) {
     btnSubmit.value = "Đang gửi...";
     const payload = {
+      siteId: webId || "lalaa",
       name: input_name.value,
-      phone: input_phone.value,
       email: input_email.value,
+      phone: input_phone.value,
       note: input_note.value,
     };
 
     await axios
-      .post("https://server-hitek.vercel.app/subscribers/", payload)
+      .post("https://localhost:7148/api/Subscribers", payload)
       .then(async function (response) {
         // await console.log(response);
         handleReset();
@@ -98,8 +102,8 @@ const handleSubmit = async (e) => {
         }, 2000);
       })
       .catch(async function (error) {
-        console.log(error.response.data.msg);
-        await handleNotify(`! ${error.response.data.msg}`, true);
+        // console.log(error.response.data.msg);
+        await handleNotify(`! ${"Error something"}`, true);
         btnSubmit.value = "Gửi";
       });
   } else {
