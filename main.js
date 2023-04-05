@@ -91,7 +91,13 @@ const handleSubmit = async (e) => {
     };
 
     await axios
-      .post("https://localhost:7148/api/Subscribers", payload)
+      .post("https://localhost:7148/api/Subscribers", {
+        siteId: "string 15",
+        name: "string ",
+        email: "user4@example.com",
+        phone: "string4",
+        note: "string4",
+      })
       .then(async function (response) {
         // await console.log(response);
         handleReset();
