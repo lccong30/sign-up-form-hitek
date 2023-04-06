@@ -8,6 +8,12 @@ function showError(input, msg) {
   input.parentElement.querySelector("span").innerHTML = msg || "Không hợp lệ";
 }
 
+const fetchapi = async () => {
+  await axios.get("https://localhost:7176/api/Product").then((res) => {
+    console.log(res);
+  });
+};
+fetchapi();
 // Handle when input validate
 function isValidateInput(input) {
   input.parentElement.querySelector("span").innerHTML = "";
@@ -90,16 +96,13 @@ const handleSubmit = async (e) => {
       note: input_note.value,
     };
 
-    await axios
-      .post("https://localhost:7148/api/Subscribers", {
-        siteId: "string 15",
-        name: "string ",
-        email: "user4@example.com",
-        phone: "string4",
-        note: "string4",
+    axios
+      .post("https://localhost:7148/api/Subscribers", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then(async function (response) {
-        // await console.log(response);
+      .then((response) => {
         handleReset();
         handleNotify(`! Đăng ký thành công`, false);
         btnSubmit.value = "Đã lưu";
@@ -107,9 +110,8 @@ const handleSubmit = async (e) => {
           btnSubmit.value = "Gửi";
         }, 2000);
       })
-      .catch(async function (error) {
-        // console.log(error.response.data.msg);
-        await handleNotify(`! ${"Error something"}`, true);
+      .catch((error) => {
+        handleNotify(`! ${"Error something"}`, true);
         btnSubmit.value = "Gửi";
       });
   } else {
