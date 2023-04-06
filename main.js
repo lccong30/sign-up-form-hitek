@@ -8,12 +8,6 @@ function showError(input, msg) {
   input.parentElement.querySelector("span").innerHTML = msg || "Không hợp lệ";
 }
 
-const fetchapi = async () => {
-  await axios.get("https://localhost:7176/api/Product").then((res) => {
-    console.log(res);
-  });
-};
-fetchapi();
 // Handle when input validate
 function isValidateInput(input) {
   input.parentElement.querySelector("span").innerHTML = "";
